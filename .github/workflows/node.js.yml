@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -33,7 +33,6 @@ jobs:
     - name: Install dependencies
       #Using npm ci is generally faster than using install
       run: |
-        # cd react-test
         npm ci
     - name: Build the App_
       run: |
@@ -41,10 +40,8 @@ jobs:
         npm run build
     - name: Run component tests
       run: |
-        # cd react-test
         npm run test
     - name: Start the app
       run: |
-        # cd react-test
         npm start & 
         npx wait-on --timeout 60000
