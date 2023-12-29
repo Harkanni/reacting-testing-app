@@ -14,8 +14,9 @@ function App() {
           href="https://ultimateqa.com/"
           target="_blank"
           rel="noopener noreferrer"
+          data-testid="learn-link"
         >
-          Learn React
+          Learn Testing and Dev
         </a>
       </header>
     </div>
