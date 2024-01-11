@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-const Userform = () => {
+const Userform = ({ onAddUser }) => {
    const [state, setState] = useState({ name: '', email: '' });
    const handleSubmit = (event) => {
       event.preventDefault()
+
+      onAddUser(state)
    }
 
    const handleChange = (event) => {
@@ -19,7 +21,7 @@ const Userform = () => {
         <label htmlFor=''>Email</label>
         <input type='email' name='email' value={state.email} onChange={handleChange} />
       </div>
-      <button>Submit</button>
+      <button>Add User</button>
     </form>
   );
 };
