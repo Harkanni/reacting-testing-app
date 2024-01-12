@@ -3,8 +3,7 @@ import user from '@testing-library/user-event';
 
 import UserList from './UserList';
 
-test('render one row per user', () => {
-  // RENDER THE COMPONENT
+const RenderComponent = () => {
   const users = [
     { name: 'John', email: 'John@example.com' },
     { name: 'Jane', email: 'Jane@example.com' },
@@ -15,6 +14,13 @@ test('render one row per user', () => {
   //   const { container } = render(<UserList users={users} />);
   render(<UserList users={users} />);
 
+  return { users };
+};
+
+test('render one row per user', () => {
+  // RENDER THE COMPONENT
+  RenderComponent();
+
   // FIND ALL ROWS IN THE TABLE
   const rows = within(screen.getByTestId('user')).getAllByRole('row');
   //   const rows = container.querySelectorAll('tbody tr')
@@ -24,14 +30,7 @@ test('render one row per user', () => {
 });
 
 test('render email and name of each user', () => {
-  const users = [
-    { name: 'John', email: 'John@example.com' },
-    { name: 'Jane', email: 'Jane@example.com' },
-    { name: 'Bob', email: 'Bob@example.com' },
-    { name: 'sendaraven', email: 'sendaraven@example.com' }
-  ];
-
-  render(<UserList users={users} />);
+  const { users } = RenderComponent();
 
   screen.logTestingPlaygroundURL();
 

@@ -10,8 +10,8 @@ const UserList = ({ users }) => {
         </tr>
       </thead>
       <tbody data-testid={'user'}>
-        {users.map((user) => (
-          <tr>
+        {users.map((user, id) => (
+          <tr key={id}>
             <td>{user.name}</td>
             <td>{user.email}</td>
           </tr>
