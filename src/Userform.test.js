@@ -50,3 +50,22 @@ test('Calls onUserAdd when form is submitted', async () => {
     email: 'janedoe@gmail.com'
   });
 });
+
+test('empty input fields when form is submitted', () => {
+  render(<Userform onAddUser={() => {}} />);
+
+  const name = screen.getByRole('textbox', { name: /name/i });
+  const email = screen.getByRole('textbox', { name: /email/i });
+  const button = screen.getByRole('button');
+
+  user.click(name);
+  user.keyboard('Jane');
+
+  user.click(email);
+  user.keyboard('janedoe@gmail.com');
+
+  user.click(button);
+
+  expect(name).toHaveValue('');
+  expect(email).toHaveValue('');
+});

@@ -6,6 +6,7 @@ const Userform = ({ onAddUser }) => {
     event.preventDefault();
 
     onAddUser(state);
+    setState({ name: '', email: '' });
   };
 
   const handleChange = (event) => {
