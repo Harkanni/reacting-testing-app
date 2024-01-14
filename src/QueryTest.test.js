@@ -34,11 +34,14 @@ const Component = () => {
 };
 
 test('Test query functions', () => {
-   render(<Component />)
+  render(<Component />);
 
-   const header = screen.getByRole('banner')
-   const h3 = screen.getByText(/REACT TEST/i)
-   const nameInput = screen.getByRole('textbox', { name: 'name'})
-
-})
-
+  const header = screen.getByRole('banner');
+  const h3 = screen.getByText(/REACT TEST/i);
+  const nameInput = screen.getByRole('textbox', { name: 'name' });
+  const emailInput = screen.getByPlaceholderText('enter your email');
+  const countInput = screen.getByLabelText('Count');
+  const button = screen.getByRole('button');
+  const ul = screen.getByRole('list');
+  const li = screen.getByText('Admin', { selector: 'ul li'});
+});
