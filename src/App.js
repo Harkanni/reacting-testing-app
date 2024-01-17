@@ -1,22 +1,57 @@
-import './App.css';
-import UserList from './UserList';
-import Userform from './Userform';
-import { useState } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootRoute from './routes/RootRoute';
+import HomeRoute from './routes/HomeRoute';
+import NotFoundRoute from './routes/NotFoundRoute';
+import RepositoriesSearchRoute from './routes/RepositoriesSearchRoute';
+import EditorRoute from './routes/EditorRoute';
+import SignUpRoute from './routes/SignUpRoute';
+import SignInRoute from './routes/SignInRoute';
+import SignOutRoute from './routes/SignOutRoute';
+import TestRoute from './routes/TestRoute';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootRoute />,
+    children: [
+      {
+        path: 'test',
+        element: <TestRoute />,
+      },
+      {
+        path: 'signout',
+        element: <SignOutRoute />,
+      },
+      {
+        path: 'signup',
+        element: <SignUpRoute />,
+      },
+      {
+        path: 'signin',
+        element: <SignInRoute />,
+      },
+      {
+        path: '',
+        element: <HomeRoute />,
+      },
+      {
+        path: 'repositories/:owner/:repoName/*',
+        element: <EditorRoute />,
+      },
+      {
+        path: 'repositories',
+        element: <RepositoriesSearchRoute />,
+      },
+      {
+        path: '*',
+        element: <NotFoundRoute />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  const [users, setUsers] = useState([{ name: 'Akanni', email: 'sendaraven@gmail.com' }]);
-
-  const onAddUser = (user) => {
-   setUsers([...users, user]);
-  }
-  return (
-    <div className=''>
-      <Userform onAddUser={onAddUser} />
-      <hr />
-
-      <UserList users={users} />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
