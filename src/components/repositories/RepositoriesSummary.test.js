@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react';
+ import { screen, render } from '@testing-library/react';
 import RepositoriesSummary from './RepositoriesSummary';
 
 test('displays information about the repository', () => {
