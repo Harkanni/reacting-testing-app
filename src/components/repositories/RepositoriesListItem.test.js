@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react';
+  import { screen, render } from '@testing-library/react';
 import RepositoriesListItem from './RepositoriesListItem';
 import { MemoryRouter } from 'react-router';
 
@@ -23,7 +23,7 @@ function renderComponent() {
   };
 }
 
-test('shows a link to hte github homepage for this repository', async () => {
+test('shows a link to the github homepage for this repository', async () => {
   const { repository } = renderComponent();
   await screen.findByRole('img', { name: 'Javascript' });
 
